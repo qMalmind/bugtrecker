@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('user_actions', function (Blueprint $table) {
             $table->id("id_user_action");
             
-            $table->unsignedInteger("id_user");
-            $table->foreign("id_user")->references("id_user")->on("id_user")->onDelete('cascade');
+            $table->unsignedBigInteger("id_user");
+            $table->foreign("id_user")->references("id_user")->on("users")->onDelete('cascade');
 
-            $table->unsignedInteger("id_action");
-            $table->foreign("id_action")->references("id_action")->on("id_action")->onDelete('cascade');
+            $table->unsignedBigInteger("id_action");
+            $table->foreign("id_action")->references("id_action")->on("actions")->onDelete('cascade');
 
         });
     }

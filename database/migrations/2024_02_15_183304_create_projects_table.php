@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("project_name", 255);
             $table->tinyText("project_description");
             $table->string("logo")->nullable();
+            $table->unsignedBigInteger('executor_task');
             $table->index(["executor_task"])->comment("id проекта, которые делает задачи для этого проекта");
 
             $table->timestamps();

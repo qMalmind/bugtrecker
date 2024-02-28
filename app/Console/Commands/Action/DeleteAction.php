@@ -28,7 +28,6 @@ class DeleteAction extends Command
     public function handle()
     {
         $action = Action::where("id_action", $this->argument("id"))->first();
-        // dd($action->getKeyName());
         if(
             $action &&
             $this->confirm("Удалить действие?0_О")

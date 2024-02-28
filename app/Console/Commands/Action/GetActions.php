@@ -12,7 +12,7 @@ class GetActions extends Command
      *
      * @var string
      */
-    protected $signature = 'action:get-all';
+    protected $signature = 'action:list';
 
     /**
      * The console command description.

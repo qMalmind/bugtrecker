@@ -20,7 +20,7 @@ class DeleteAction extends Command
      *
      * @var string
      */
-    protected $description = 'Удаляет роль по id';
+    protected $description = 'Удаляет действие по id';
 
     /**
      * Execute the console command.

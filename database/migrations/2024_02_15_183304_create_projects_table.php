@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id("id_project");
 
             $table->string("project_name", 255);
-            $table->tinyText("project_description");
+            $table->tinyText("project_description")->nullable();
             $table->string("logo")->nullable();
-            $table->unsignedBigInteger('executor_task');
-            $table->index(["executor_task"])->comment("id проекта, которые делает задачи для этого проекта");
+            $table->unsignedBigInteger('executor_task')->nullable()->comment("id проекта, которые делает задачи для этого проекта");
+            $table->index(["executor_task"]);
 
             $table->timestamps();
         });

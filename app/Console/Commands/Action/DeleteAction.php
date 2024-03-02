@@ -5,6 +5,7 @@ namespace App\Console\Commands\Action;
 use Illuminate\Console\Command;
 
 use App\Models\Action;
+use App\Actions\ActionActions;
 
 class DeleteAction extends Command
 {
@@ -27,18 +28,16 @@ class DeleteAction extends Command
      */
     public function handle()
     {
-        $action = Action::where("id_action", $this->argument("id"))->first();
+
         if(
-            $action &&
             $this->confirm("Удалить действие?0_О")
         ){
-            $delete_status = $action->delete();
+            $delete_status = ActionActions::Delete($this->argument("id"));
             if($delete_status){
                 $this->line("<fg=white;bg=green>Действие успешно удалёно</>");
             }
         }else{
             $this->line("<fg=white;bg=red>При удалении действия произошла ошибка.</>");
-            dd($action);
         }
     }
 }

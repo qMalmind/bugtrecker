@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Action;
 
+use app\Actions\ActionActions;
 use App\Models\Action;
 use Illuminate\Console\Command;
 
@@ -32,15 +33,15 @@ class UpdateAction extends Command
         $this->line("id: " . $action->id_action);
         $this->line("action_name: " . $action->action_name);
         $this->line("action_description: " . $action->action_description);
-
+        $data = [];
         if($action_name = $this->ask("Новое название действия")){
-            $action->action_name = $action_name;
+            $data['action_name'] = $action_name;
         }
 
         if($action_description = $this->ask("Новое описание действия")){
-            $action->action_description = $action_description;
+            $data['action_description'] = $action_description;
         }
-        if($action->save()){
+        if(ActionActions::Update(id_action:$this->argument('id'), data:$data)){
             $this->info("id: " . $action->id_action);
             $this->info("action_name: " . $action->action_name);
             $this->info("action_description: " . $action->action_description);

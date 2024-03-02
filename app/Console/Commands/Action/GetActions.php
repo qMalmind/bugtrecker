@@ -4,6 +4,7 @@ namespace App\Console\Commands\Action;
 
 use App\Models\Action;
 use Illuminate\Console\Command;
+use App\Actions\ActionActions;
 
 class GetActions extends Command
 {
@@ -28,7 +29,7 @@ class GetActions extends Command
     {
         $this->table(
             ['ID', 'Action name', 'Action description'],
-            Action::all(["id_action", "action_name", "action_description"])->toArray()
+            ActionActions::List(["id_action", "action_name", "action_description"])->toArray()
         );
     }
 }
